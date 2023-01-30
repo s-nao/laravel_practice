@@ -3,4 +3,4 @@ layout: default
 title: トップページ
 ---
 
-- [ローカル環境](create_local.md)
+- [ローカル環境](pages/create_local.md)

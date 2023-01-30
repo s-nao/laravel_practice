@@ -59,9 +59,9 @@ services:
     mysql:
         image: mysql:8.0.31
         ports:
-            - "13306:3306"
+            - "3306:3306" # ローカル以外で使うなら下手に外部に開けない
         environment:
-            TZ: "Asia/Tokyo"
+            TZ: Asia/Tokyo
             MYSQL_RANDOM_ROOT_PASSWORD: yes
             MYSQL_DATABASE: laravel_practice
             MYSQL_USER: app
@@ -103,4 +103,33 @@ docker compose up -d mysql
 ```shell
 docker compose exec mysql mysql -D laravel_practice -u app -p
 # Enter password: と出てくるので「app_user」と入力する
+```
+
+## laravelの起動
+
+```shell
+php artisan serve 
+
+# ホストを設定したい時 --host ホスト名　デフォルトは127.0.0.1
+# ポートを設定したい時 --port ポート番号 8000
+```
+
+## DBのマイグレーション
+
+マイグレーションコマンド
+```shell
+php aritisan migrate
+```
+
+マイグレーションの確認
+
+```text
+% php artisan migrate:status
+
+  Migration name .................................................................................................................... Batch / Status  
+  2014_10_12_000000_create_users_table ..................................................................................................... [1] Ran  
+  2014_10_12_100000_create_password_resets_table ........................................................................................... [1] Ran  
+  2019_08_19_000000_create_failed_jobs_table ............................................................................................... [1] Ran  
+  2019_12_14_000001_create_personal_access_tokens_table .................................................................................... [1] Ran  
+
 ```
