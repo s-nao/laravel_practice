@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+    mysql:
+        image: mysql:8.0.31
+        ports:
+            - "13306:3306"
+        environment:
+            TZ: "Asia/Tokyo"
+            MYSQL_RANDOM_ROOT_PASSWORD: yes
+            MYSQL_DATABASE: laravel_practice
+            MYSQL_USER: app
+            MYSQL_PASSWORD: app_user
+        volumes:
+            - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
