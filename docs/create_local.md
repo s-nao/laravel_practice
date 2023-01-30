@@ -1,3 +1,8 @@
+﻿---
+layout: default
+title: ローカル環境設定
+---
+
 # 初期設定
 
 ## laravelの初期化
