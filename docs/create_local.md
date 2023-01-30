@@ -9,8 +9,8 @@ title: ローカル環境設定
 
 [参考：公式インストール方法](https://laravel.com/docs/9.x/installation#your-first-laravel-project)
 
-```$shell
-composer create-project laravel/laravel ディレクトリ名
+``` shell
+composer create-project laravel/laravel practice
 ```
 
 ### 注意
@@ -21,7 +21,7 @@ laravelプロジェクトを作成する際のディレクトリはカレント�
 
 ## gitの設定
 
-```$shell
+``` shell
 git init
 git remote add origin git@github.com:s-nao/laravel_practice.git
 git add .
@@ -73,7 +73,7 @@ services:
 
 2.mysqlファイルの設定をする
 
-```
+``` text
 プロジェクトルート
 |- docker
 　　|-db
