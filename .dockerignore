@@ -1,0 +1,6 @@
+.env
+
+vendor/
+tests/
+.idea/
+node_modules/

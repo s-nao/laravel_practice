@@ -1,5 +1,12 @@
 version: '3.8'
 services:
+    laravel:
+        build: .
+        ports:
+            - "19000:9000"
+        environment:
+            TZ: "Asia/Tokyo"
+
     mysql:
         image: mysql:8.0.31
         ports:
