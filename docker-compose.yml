@@ -1,5 +1,19 @@
 version: '3.8'
 services:
+    nginx:
+        image: nginx:latest
+        ports:
+            - "18080:8080"
+        volumes:
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d
+
+    laravel:
+        build: .
+        ports:
+            - "19000:9000"
+        environment:
+            TZ: "Asia/Tokyo"
+
     mysql:
         image: mysql:8.0.31
         ports:

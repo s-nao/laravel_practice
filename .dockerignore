@@ -1,0 +1,14 @@
+.idea/
+
+.env
+.env.example
+
+.git
+.editorconfig
+
+node_modules/
+vendor/
+
+docs/
+tests/
+storage/logs/*
