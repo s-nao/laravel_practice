@@ -76,3 +76,56 @@ docker compose up -d laravel --build
 docker compose build laravel
 docker compose up -d
 ```
+
+---
+
+## 追記
+
+今回の変更でビルドされた静的ファイルができたので、nginx側に配置する必要ができてきた。
+
+そのため、以下2つのファイルに変更を加えた。
+
+nginxはおそらく本来このような設定でないと、他のパスに移動したときにうまくいかなかったと想定される。
+
+
+- docker-compose.yml
+
+``` yaml
+version: '3.8'
+services:
+    nginx:
+        image: nginx:latest
+        ports:
+            - "18080:8080"
+        volumes:
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./public:/var/www/public # 追加
+        depends_on:
+            - laravel
+```
+
+- nginx conf
+
+``` 
+access_log /dev/stdout main;
+error_log /dev/stderr warn;
+
+server {
+    listen 8080;
+
+    root /var/www/public;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(\.+)$;
+        fastcgi_pass laravel:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+    }
+}
+```

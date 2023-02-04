@@ -6,6 +6,7 @@ services:
             - "18080:8080"
         volumes:
             - ./docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./public:/var/www/public
         depends_on:
             - laravel
 
