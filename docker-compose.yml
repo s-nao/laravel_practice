@@ -6,6 +6,9 @@ services:
             - "18080:8080"
         volumes:
             - ./docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./public:/var/www/public
+        depends_on:
+            - laravel
 
     laravel:
         build: .
@@ -13,6 +16,8 @@ services:
             - "19000:9000"
         environment:
             TZ: "Asia/Tokyo"
+        depends_on:
+            - mysql
 
     mysql:
         image: mysql:8.0.31
