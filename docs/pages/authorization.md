@@ -114,6 +114,7 @@ server {
     listen 8080;
 
     root /var/www/public;
+    index index.php index.html;
 
     location / {
         try_files $uri $uri/ /index.php$is_args$args;
@@ -128,4 +129,5 @@ server {
         fastcgi_param PATH_INFO $fastcgi_path_info;
     }
 }
+
 ```
