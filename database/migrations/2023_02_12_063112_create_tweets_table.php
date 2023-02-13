@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tweet', function (Blueprint $table) {
+        Schema::create('tweets', function (Blueprint $table) {
             $table->id();
-            $table->text("tweet");
+            $table->text("message");
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tweet');
+        Schema::dropIfExists('tweets');
     }
 };

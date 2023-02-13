@@ -3,7 +3,7 @@
 1.マイグレーションファイルの作成
 
 ```shell
-php artisan make:migration create_tweet_table
+php artisan make:migration create_tweets_table
 ```
 
 上記コマンドを打つと以下のようなファイルが生成されています。
@@ -12,7 +12,7 @@ php artisan make:migration create_tweet_table
 ./
 |-databases
 　　　|-migrations
-　　　　　　|-2023_02_12_063112_create_tweet_table.php
+　　　　　　|-2023_02_12_063112_create_tweets_table.php
 ```
 
 ファイルの中身は、マイグレーションを進めるときのupとロールバックする時のdownが記載されています。
@@ -37,7 +37,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tweet', function (Blueprint $table) {
+        Schema::create('tweets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -50,7 +50,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tweet');
+        Schema::dropIfExists('tweets');
     }
 };
 
@@ -62,9 +62,9 @@ return new class extends Migration
 ```injectablephp
     public function up()
     {
-        Schema::create('tweet', function (Blueprint $table) {
+        Schema::create('tweets', function (Blueprint $table) {
             $table->id();
-            $table->text("tweet");
+            $table->text("message");
             $table->timestamps();
         });
     }
@@ -93,7 +93,7 @@ mysql> show tables;
 | migrations                 |
 | password_resets            |
 | personal_access_tokens     |
-| tweet                      |
+| tweets                     |
 | users                      |
 +----------------------------+
 6 rows in set (0.01 sec)
@@ -113,5 +113,5 @@ mysql> show tables;
   2014_10_12_100000_create_password_resets_table ........................................................................................... [1] Ran  
   2019_08_19_000000_create_failed_jobs_table ............................................................................................... [1] Ran  
   2019_12_14_000001_create_personal_access_tokens_table .................................................................................... [1] Ran  
-  2023_02_12_063112_create_tweet_table ..................................................................................................... [2] Ran
+  2023_02_12_063112_create_tweets_table ..................................................................................................... [2] Ran
 ```
