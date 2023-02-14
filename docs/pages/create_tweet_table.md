@@ -6,6 +6,11 @@
 php artisan make:migration create_tweets_table
 ```
 
+もしモデルファイルと同時に作成する場合
+```shell
+php artisan make:model Tweet --migration
+```
+
 上記コマンドを打つと以下のようなファイルが生成されています。
 
 ``` text
